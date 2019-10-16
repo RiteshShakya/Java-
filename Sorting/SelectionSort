@@ -1,0 +1,15 @@
+import java.util.Scanner;
+class selectionsort {
+	public static void main(String[] args) {
+		int arr[] = {2,4,1,7,-9,6};
+
+		for (int i=0; i<arr.length; i++ ) {
+			for (int j=0; j<arr.length; j++) {
+				small = arr[j];
+                if(small>arr[j+1]){
+                	small = arr[j+1];
+                }
+			}
+		}
+	}
+}
