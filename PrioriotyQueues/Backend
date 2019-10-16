@@ -1,0 +1,80 @@
+import java.util.Scanner;
+class priorityq {
+	class node {
+		int data, p;
+		node next;
+
+		node(int data, int p) { 
+			this.data=data;
+			this.p = p;
+			this.next=null; }
+		}
+		node head = null;
+		
+        /////////////TO INSERT A NODE////////
+		public void insert(int data, int p) {
+			node n = new node(data,p);
+			if  (head==null) {
+				head=n;
+
+			} else {
+				node ptr = head;
+				while(ptr.next!=null) {
+					if(n.p>=ptr.p && n.p<ptr.next.p){
+						n.next=ptr.next;
+						ptr.next=n;
+
+					}
+					else {
+						ptr.next = n;
+						n.next=null;
+					}
+				}
+			}
+
+		}
+
+		  ////////TO DISPLAY THE LIST//////
+
+		public void display() {
+			node ptr = null;
+
+			ptr = head;
+			if(ptr == null) {System.out.println("The list is empty");}
+			else {
+				while(ptr.next!=null) {
+					System.out.print( ptr.data + " -> ");
+				}
+			}
+		}
+	}
+
+		// public static void main(String[] args) {
+
+		// 	priorityq ob = new priorityq();
+		// 	int data, p;
+		// 	System.out.println("Enter the corrsponding char for the desired action:\n'i' for insert ");
+		// 	System.out.println("'d' for display the list ");
+
+		// 	Scanner sc = new Scanner(System.in);
+		// 	char ch = sc.next().charAt(0);
+
+		// 	switch(ch) {
+		// 		case 'i': 	
+		// 		System.out.println(" Enter the data and the priority: ");
+		// 		data = sc.nextInt();
+		// 		p = sc.nextInt();  
+		// 		ob.insert(data, p);
+		// 		break;
+
+		// 		case 'd' :
+		// 		ob.display();
+		// 		break;
+
+		// 		default:
+		// 		System.out.println("No appropriate choice was selected ");
+		// 		break;
+
+		// 	}
+		// }
+	
