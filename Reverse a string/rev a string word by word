@@ -1,0 +1,32 @@
+import java.io.*;
+import java.util.*;
+
+class GFG {
+	public static void main (String[] args) {
+	    
+	    String s = "   hello niggers my name is ritesh   and i am practicing coding in gfg   ";
+	    String ans="";
+        int i=s.length()-1;
+        // Scanner sc = new Scanner(System.in);
+        // s= sc.nextLine();
+        while(i>=0) {
+            
+            while(i>=0 && s.charAt(i)==' ') i--;
+            int j=i;
+            
+            while(i>=0 && s.charAt(i)!= ' ') i--;
+            if(i<0) break;
+            else{
+            if(ans.isEmpty()){
+                ans = ans.concat(s.substring(i+1,j+1));
+            }
+            else {
+                ans = ans.concat(" " + s.substring(i+1,j+1));
+            }}
+             
+             
+        }
+        System.out.print(ans);
+        
+	}
+}
