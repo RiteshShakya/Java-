@@ -1,0 +1,101 @@
+import java.util.*;
+
+class twostacksarray{
+
+	static int arr[] = new int[10];
+	static int top1 =-1, top2 =10;
+
+	public static void insert1 (int ele){
+		if (top1<top2-1 && top1<arr.length) {
+			top1++;
+			arr[top1] = ele;
+			for (int i: arr)
+				System.out.print(i + " ");
+			System.out.println();
+			
+		}
+		else 
+			System.out.println("stack overflow");
+	}
+
+	public static void insert2 (int ele){
+		if (top1<top2-1 && top2>=0) {
+			top2--;
+			arr[top2] = ele;
+			for (int i: arr)
+				System.out.print(i + " ");
+			System.out.println();
+			
+			
+		}
+		else 
+			System.out.println("stack overflow");
+	}
+
+	public static void pop1() {
+		arr[top1] = 0;
+		top1--;
+		for (int i: arr)
+			System.out.print(i + " ");
+		System.out.println();
+	} 
+
+	public static void pop2() {
+		arr[top2] = 0;
+		top1++;
+		for (int i: arr)
+			System.out.print(i + " ");
+		System.out.println();
+	}
+	public static void main(String[] args) {
+
+		//System.out.println("Enter the appropriate choice for stack");
+		// System.out.println("1. insert in 1");
+		// System.out.println("2. insert in 2");
+		// System.out.println("3. pop 1");
+		// System.out.println("4. pop 2");
+
+		Scanner sc = new Scanner (System.in);
+		int ch, data;
+		
+		boolean quit = false;
+
+
+		while(!quit) {
+			System.out.println("1. insert in 1");
+			System.out.println("2. insert in 2");
+			System.out.println("3. pop 1");
+			System.out.println("4. pop 2");
+			ch = sc.nextInt();
+
+			switch(ch) {
+				case 1: System.out.println("Enter the data");
+				data = sc.nextInt();
+				insert1(data);
+				break;
+
+				case 2: System.out.println("Enter the data");
+				data = sc.nextInt();
+				insert2(data);
+				break;
+
+				case 3: pop1();
+				break;
+
+				case 4: pop2();
+				break;
+
+				case 5: quit=true;
+				break;        
+				
+
+				default:  System.out.println("Invalid data");  
+
+			}                     
+
+
+
+		}
+		
+	}
+}
