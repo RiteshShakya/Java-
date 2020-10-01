@@ -1,0 +1,83 @@
+import java.util.concurrent.TimeUnit;
+
+public class mergeSort {
+    public static void main(String[] args) {
+        int arr1[] = {4, 6, 10, 12, 15, 23, 28, 35};
+        int arr2[] = {6, 10, 4, 23, 15, 12, 35, 28};
+        int arr3[] = {35, 28, 23, 15, 12, 10, 6, 4};
+
+        long start1 = System.currentTimeMillis();
+        mergeSort(arr1, 0, arr1.length - 1);
+        for (int i = 0; i < arr1.length; i++) {
+            System.out.print(arr1[i] + " ");
+        }
+        System.out.println();
+        long end1 = System.currentTimeMillis();
+
+        System.out.println("Execution Time for Array 1 is : " + (end1 - start1));
+
+
+        long start2 = System.currentTimeMillis();
+        mergeSort(arr2, 0, arr2.length - 1);
+        for (int i = 0; i < arr2.length; i++) {
+            System.out.print(arr2[i] + " ");
+        }
+        System.out.println();
+
+        long end2 = System.currentTimeMillis();
+
+        System.out.println("Execution Time for Array 2 is : " + (end2 - start2));
+
+        long start3 = System.currentTimeMillis();
+        mergeSort(arr3, 0, arr3.length - 1);
+        for (int i = 0; i < arr3.length; i++) {
+            System.out.print(arr3[i] + " ");
+        }
+        System.out.println();
+
+        long end3 = System.currentTimeMillis();
+
+        System.out.println("Execution Time for Array 3 is : " + (end3 - start3));
+    }
+
+    public static void merge(int[] arr, int start, int end, int mid) {
+        int[] temp = new int[end - start + 1];
+        int i = start, j = mid + 1, k = 0;
+
+        while (i <= mid && j <= end) {
+            if (arr[i] <= arr[j]) {
+                temp[k] = arr[i];
+                k++;
+                i++;
+            } else {
+                temp[k] = arr[j];
+                k++;
+                j++;
+            }
+        }
+
+        while (i <= mid) {
+            temp[k] = arr[i];
+            k++;
+            i++;
+        }
+        while (j <= end) {
+            temp[k] = arr[j];
+            k++;
+            j++;
+        }
+
+        for (i = start; i <= end; i++) {
+            arr[i] = temp[i - start];
+        }
+    }
+
+    public static void mergeSort(int arr[], int start, int end) {
+        if (start < end) {
+            int mid = (start + end) / 2;
+            mergeSort(arr, start, mid);
+            mergeSort(arr, mid + 1, end);
+            merge(arr, start, end, mid);
+        }
+    }
+}
